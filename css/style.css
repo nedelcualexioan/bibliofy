@@ -25,3 +25,10 @@ body {
 
     margin-left: 7%;
 }
+
+.icons {
+    display: flex;
+    position: absolute;
+    right: 1.35rem;
+    gap: 0.35rem;
+}
