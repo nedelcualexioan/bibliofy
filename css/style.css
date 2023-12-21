@@ -1,0 +1,29 @@
+:root {
+    --ff-primary: 'Bebas Neue', sans-serif;
+    --ff-secondary: 'Montserrat', sans-serif;
+}
+.ff-primary{
+    font-family: var(--ff-primary);
+}
+.ff-second{
+    font-family: var(--ff-secondary);
+}
+body {
+    color: #333333;
+}
+header {
+    background-image: url(../assets/images/background2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 70%;
+    padding-bottom: 30vw;
+}
+.icons{
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    gap: 1rem;
+}
+.categories{
+    background-color: #f0f8ff;
+}
