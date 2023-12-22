@@ -1,6 +1,10 @@
 :root {
     --ff-primary: 'Bebas Neue', sans-serif;
     --ff-secondary: 'Montserrat', sans-serif;
+    --col-primary: #4F4A45;
+    --col-secondary: #F6F1EE;
+    --col-tertiary: #6C5F5B;
+    --col-main: #ED7D31;
 }
 .ff-primary{
     font-family: var(--ff-primary);
@@ -9,7 +13,7 @@
     font-family: var(--ff-secondary);
 }
 body {
-    color: #333333;
+    color: var(--col-primary);
 }
 header {
     background-image: url(../assets/images/background2.png);
@@ -24,6 +28,12 @@ header {
     right: 2rem;
     gap: 1rem;
 }
+.header-title{
+    font-size: 20vh;
+}
 .categories{
-    background-color: #f0f8ff;
+    background-color: var(--col-secondary);
+}
+.categories-title{
+    border-bottom: 0.5rem solid var(--col-primary);
 }
