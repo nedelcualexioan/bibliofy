@@ -14,6 +14,7 @@
 }
 body {
     color: var(--col-primary);
+    background-color: var(--col-secondary);
 }
 header {
     background-image: url(../assets/images/background2.png);
@@ -31,8 +32,10 @@ header {
 .header-title{
     font-size: 20vh;
 }
-.categories{
-    background-color: var(--col-secondary);
+.def-border{
+    border: 0.2rem solid var(--col-primary);
+    border-right: 0;
+    border-left: 0;
 }
 .categories-title{
     border-bottom: 0.5rem solid var(--col-primary);
