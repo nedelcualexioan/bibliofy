@@ -18,11 +18,16 @@ body {
     font-family: var(--ff-secondary);
 }
 header {
-    background-image: url(../assets/images/background2.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 70%;
     height: 100vh;
+}
+header.index{
+    background-image: url(../assets/images/background2.png);
+    background-position: 70%;
+}
+header.contact{
+    height: auto;
 }
 .icons{
     position: absolute;
@@ -45,6 +50,6 @@ header {
 .title-boder{
     border-bottom: 0.5rem solid var(--col-primary);
 }
-.row-fix{
+.ovf-fix{
     overflow-x: hidden;
 }
