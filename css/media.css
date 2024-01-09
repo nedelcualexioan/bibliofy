@@ -1,10 +1,37 @@
-/* Header Title */
-@media only screen and (max-width: 768px){
+/* Medium */
+@media only screen and (max-width: 767.98px){
+
+    /* INDEX */
+
+    /* HEADER */
+
     [class*="header-title"] {
         font-size: 10vh;
     }
     [class*="book-cover"] {
         width: 45vw;
         height: 60vw;
+    }
+
+    /* CONTACT */
+
+    /* FOOTER */
+
+    [class*="footer-contact"] {
+        position: static;
+        bottom: auto;
+        width: auto;
+    }
+}
+@media only screen and (max-height: 767.98px){
+
+    /* CONTACT */
+
+    /* FOOTER */
+
+    [class*="footer-contact"] {
+    position: static;
+    bottom: auto;
+    width: auto;
     }
 }

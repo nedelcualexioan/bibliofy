@@ -22,13 +22,6 @@ header {
     background-size: cover;
     height: 100vh;
 }
-header.index{
-    background-image: url(../assets/images/background2.png);
-    background-position: 70%;
-}
-header.contact{
-    height: auto;
-}
 .icons{
     position: absolute;
     top: 1rem;
@@ -52,4 +45,27 @@ header.contact{
 }
 .ovf-fix{
     overflow-x: hidden;
+}
+.gmaps{
+    border:2px solid black;
+    width: 100%;
+    height: 100%;
+}
+
+/* INDEX */
+
+.header-index{
+    background-image: url(../assets/images/background2.png);
+    background-position: 70%;
+}
+
+/* CONTACT */
+
+.header-contact{
+    height: auto;
+}
+.footer-contact{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
 }

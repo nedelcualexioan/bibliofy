@@ -24,9 +24,9 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="contact pb-5">
+    <header class="header-contact">
         <!-- Navbar -->
-        <nav class="navbar navbar-dark navbar-expand-sm just pb-3">
+        <nav class="navbar navbar-expand-sm just pb-3">
             <div class="container-fluid justify-content-end">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -106,8 +106,8 @@
         </ul>
     </header>
     <!-- Contact Form -->
-    <main class="container d-flex flex-md-row flex-column justify-content-evenly pb-5">
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+    <main class="d-flex flex-md-row flex-column justify-content-evenly text-center py-md-5 m-md-0 m-sm-5 m-3">
+        <form class="m-md-0 m-sm-5 m-3" id="contactForm" data-sb-form-api-token="API_TOKEN" >
             <!-- Title -->
             <section class="ff-primary d-flex flex-column align-items-center justify-content-center p-sm-1">
                 <h1 class="display-1">Get in touch</h1>
@@ -123,7 +123,7 @@
                 <label class="form-label" for="emailAddress">Email Address</label>
                 <input class="form-control" id="emailAddress" type="email" data-sb-validations="required, email" />
                 <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address is not valid.</div>
             </div>
             <!-- Message input -->
             <div class="mb-3">
@@ -145,37 +145,38 @@
             </div>
         </form>
         <!-- Get in touch -->
-        <section class="border border-2 border-dark rounded-3 p-4">
+        <section class="border border-2 border-dark rounded-3 p-sm-4 p-3 m-md-0 m-sm-5 m-3">
             <!-- Title -->
-            <div class="ff-primary d-flex flex-column align-items-center justify-content-center">
-                <h1 class="display-1">Contact Us</h1>
+            <div class="ff-primary d-flex align-items-center justify-content-center">
+                <h1 class="display-1 m-0">Contact Us</h1>
             </div>
             <ul class="row list-unstyled d-flex flex-column justify-content-between m-0 g-3">
-                <li class="col d-flex align-items-center text-body-emphasis">
+                <li class="col d-flex flex-md-row flex-column align-items-center text-body-emphasis">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" aria-label="Email" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
                         </svg>
-                        <p class="m-0 ms-3">nedelcualexioaneslab@yahoo.com</p>
+                        <p class="d-sm-block d-none m-0 mt-2 ms-md-3">nedelcualexioaneslab@yahoo.com</p>
+                        <p class="d-sm-none d-block m-0 mt-2 ms-md-3">nedelcualexioaneslab<br>@yahoo.com</p>
                 </li>
-                <li class="col d-flex align-items-center text-body-emphasis">
+                <li class="col d-flex flex-md-row flex-column align-items-center text-body-emphasis">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" aria-label="Phone" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                         </svg>
-                        <p class="m-0 ms-3">0787 882 883</p>
+                        <p class="m-0 mt-2 ms-md-3">0787 882 883</p>
                 </li>
-                <li class="col d-flex align-items-center text-body-emphasis g-4">
+                <li class="col d-flex flex-md-row flex-column align-items-center text-body-emphasis g-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" aria-label="Adress" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                         </svg>
-                        <p class="m-0 ms-3">Strada Prajitiilor de pe olt nr 55</p>
+                        <p class="m-0 mt-2 ms-md-3">Strada Prajitiilor de pe olt nr 55</p>
                 </li>
-                <li class="col d-flex justify-content-center align-items-center g-5">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106.2790569748067!2d-77.0562669!3d38.871856799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b6df29ed2c27%3A0xaf83d0f8c013532f!2sPentagon!5e0!3m2!1sro!2sro!4v1704702325865!5m2!1sro!2sro" width="auto" height="auto" style="border:2px solid black;" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <li class="col g-5 p-0">
+                    <iframe class="gmaps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106.2790569748067!2d-77.0562669!3d38.871856799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b6df29ed2c27%3A0xaf83d0f8c013532f!2sPentagon!5e0!3m2!1sro!2sro!4v1704702325865!5m2!1sro!2sro" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </li>
             </ul>
         </section>
     </main>
-    <footer class="d-flex flex-wrap justify-content-sm-between justify-content-evenly align-items-center py-2 px-sm-3 px-sm-5 def-border border-bottom-0">
+    <footer class="footer-contact d-flex flex-wrap justify-content-sm-between justify-content-evenly align-items-center py-2 px-sm-3 px-sm-5 def-border border-bottom-0">
         <p class="d-sm-block d-none mb-0 px-1 text-body-secondary">© 2023 Bibliofy</p>
         <a href="index.html" class="link-body-emphasis text-decoration-none px-1 text-white">
             <img src="assets/misc/logo.png" width="120" height="70" alt="Bibliofy">
