@@ -28,6 +28,20 @@ header {
     right: 2rem;
     gap: 1rem;
 }
+
+.ovf-fix{
+    overflow-x: hidden;
+}
+
+/* INDEX */
+
+.header-index{
+    background-image: url(../assets/images/background2.png);
+    background-position: 70%;
+}
+.title-boder{
+    border-bottom: 0.5rem solid var(--col-primary);
+}
 .header-title{
     font-size: 20vh;
 }
@@ -40,24 +54,6 @@ header {
     width: 21vw;
     height: 30vw;
 }
-.title-boder{
-    border-bottom: 0.5rem solid var(--col-primary);
-}
-.ovf-fix{
-    overflow-x: hidden;
-}
-.gmaps{
-    border:2px solid black;
-    width: 100%;
-    height: 100%;
-}
-
-/* INDEX */
-
-.header-index{
-    background-image: url(../assets/images/background2.png);
-    background-position: 70%;
-}
 
 /* CONTACT */
 
@@ -69,4 +65,19 @@ header {
     bottom: 0px;
     width: 100%;
 }
+.gmaps{
+    border:2px solid black;
+    width: 100%;
+    height: 100%;
+}
 
+
+/* CART */
+.header-cart{
+    height: auto;
+}
+.footer-cart{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
