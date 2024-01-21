@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Books</title>
     <link rel="shortcut icon" href="assets/misc/logo.png" type="image/x-icon">
 
     <!-- Google fonts -->
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="nav-item d-flex justify-content-center align-items-center">
-                            <a href="books.html" class="nav-link text-dark">
+                            <a href="books.html" class="nav-link active text-secondary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" aria-label="Books" class="bi bi-book-half mx-auto mb-1" viewBox="0 0 16 16">
                                     <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
                                 </svg>
@@ -56,7 +56,7 @@
                             </a>
                         </li>
                         <li class="nav-item d-flex justify-content-center align-items-center">
-                            <a href="contact.html" class="nav-link active text-secondary">
+                            <a href="contact.html" class="nav-link text-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" aria-label="Contact Us" class="bi bi-chat-heart mx-auto mb-1 " viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M2.965 12.695a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2m-.8 3.108.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125ZM8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
                                 </svg>
@@ -102,80 +102,8 @@
             </li>
         </ul>
     </header>
-    <!-- Content -->
-    <main class="row mx-auto p-lg-5 px-sm-3 px-0 py-5">
-        <!-- Get in touch-->
-        <section class="col-xxl-7 col-md-6 col-12 row mx-auto p-sm-3">
-            <!-- Title -->           
-            <h1 class="display-1 ff-primary text-center">Get in touch</h1>
-            <!-- Form -->
-            <form class="col-12 px-0" id="contactForm" data-sb-form-api-token="API_TOKEN" >
-                <div class="row mx-auto px-0 g-3 ">
-                    <!-- Name -->
-                    <div class="col-12">
-                        <label class="form-label" for="name">Name</label>
-                        <input class="form-control" id="name" type="text" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
-                    </div>
-                    <!-- Email address -->
-                    <div class="col-12">
-                        <label class="form-label" for="emailAddress">Email Address</label>
-                        <input class="form-control" id="emailAddress" type="email" data-sb-validations="required, email" />
-                        <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address is not valid.</div>
-                    </div>
-                    <!-- Message -->
-                    <div class="col-12">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea class="form-control" id="message" type="text" style="height: 10rem;" data-sb-validations="required"></textarea>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
-                    </div>
-                    <!-- Submissions success message -->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center">Form submission successful!</div>
-                    </div>
-                    <!-- Submissions error message -->
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger">Error sending message!</div>
-                    </div>
-                    <!-- Submit button -->
-                    <div class="col-12">
-                        <a href="#" class="btn btn-dark btn-lg w-100" id="submitButton" type="submit">Submit</a>
-                    </div>
-                </div>
-            </form>
-        </section>
-        <!-- Contact Us -->
-        <section class="col-xxl-5 col-md-6 col-12 text-center p-md-3 px-sm-3 pt-5">
-            <!-- Title -->           
-            <h1 class="display-1 ff-primary">Contact Us</h1>
-                <ul class="list-unstyled d-flex flex-column justify-content-center border border-2 border-dark rounded py-5 m-0">
-                    <li class="d-flex flex-wrap justify-content-center align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" aria-label="Email" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
-                            </svg>
-                            <p class="m-auto mx-3">projectbibliofy@proton.me</p>
-                    </li>
-                    <li class="d-flex flex-wrap justify-content-center align-items-center mt-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" aria-label="Phone" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                            </svg>
-                            <p class="m-auto mx-3">0787 882 883</p>
-                    </li>
-                    <li class="d-flex flex-wrap justify-content-center align-items-center mt-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" aria-label="Adress" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                            </svg>
-                            <p class="m-auto mx-3">Strada Prajitiilor de pe olt nr 55</p>
-                    </li>
-                    <li class="d-flex justify-content-center align-items-center mt-3">
-                        <iframe class="h-100 border border-1 border-dark" style="width: 90%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106.2790569748067!2d-77.0562669!3d38.871856799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b6df29ed2c27%3A0xaf83d0f8c013532f!2sPentagon!5e0!3m2!1sro!2sro!4v1704702325865!5m2!1sro!2sro" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </li>
-                    <li class="fw-bold mt-3">
-                        <a href="#" class="text-decoration-none">Contact us at our pickup points <u>here</u></a>
-                    </li>
-                </ul>
-        </section>
+    <main>
+
     </main>
     <!-- Footer -->
     <footer class="d-flex flex-wrap justify-content-sm-between justify-content-evenly align-items-center px-sm-5 p-0 py-2 def-border border-bottom-0">
