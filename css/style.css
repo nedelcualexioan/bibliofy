@@ -24,6 +24,11 @@ body {
     right: 2rem;
     gap: 1rem;
 }
+.def-border{
+    border: 0.2rem solid var(--col-primary);
+    border-right: 0;
+    border-left: 0;
+}
 footer{
     margin-top: auto;
 }
@@ -42,20 +47,10 @@ footer{
 .header-subtitle{
     font-size: 4vw;
 }
-.def-border{
-    border: 0.2rem solid var(--col-primary);
-    border-right: 0;
-    border-left: 0;
-}
 .title-border{
     border-bottom: 0.5rem solid var(--col-primary);
 }
 .book-cover{
     width: 21vw;
     height: 30vw;
-}
-
-/* CONTACT */
-.contact-width{
-    width: 90%;
 }
