@@ -1,0 +1,33 @@
+{
+  "name": "v20.10.0-win-x64",
+  "version": "1.0.0",
+  "description": "Node.js is an open-source, cross-platform JavaScript runtime environment.",
+  "main": "app.js",
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "corepack": "^0.22.0",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.0.3",
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.0.2",
+    "npm": "^10.2.3",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^8.0.0",
+    "v20.10.0-win-x64": "file:"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

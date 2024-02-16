@@ -1,0 +1,76 @@
+:root {
+    --ff-primary: 'Bebas Neue', sans-serif;
+    --ff-secondary: 'Montserrat', sans-serif;
+    --col-primary: #4F4A45;
+    --col-secondary: #F6F1EE;
+    --col-tertiary: #6C5F5B;
+    --col-main: #ED7D31;
+}
+.ff-primary{
+    font-family: var(--ff-primary);
+}
+body {
+    color: var(--col-primary);
+    background-color: var(--col-secondary);
+    font-family: var(--ff-secondary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.nav-icons{
+    display: none;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    gap: 1rem;
+}
+.def-border{
+    border: 0.2rem solid var(--col-primary);
+    border-right: 0;
+    border-left: 0;
+}
+footer{
+    margin-top: auto;
+}
+
+/* INDEX */
+.header-index{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../assets/images/background2.png);
+    background-position: 70%;
+    height: 100vh;
+}
+.header-title{
+    font-size: 16vw;
+}
+.header-subtitle{
+    font-size: 4vw;
+}
+.title-border{
+    border-bottom: 0.5rem solid var(--col-primary);
+}
+.book-cover{
+    width: 21vw;
+    height: 30vw;
+}
+
+/* ACCOUNT */
+.w-sm-100{
+    width: auto;
+}
+
+@media only screen and (max-width: 767.98px){
+    /* INDEX */
+    [class*="book-cover"] {
+        width: 45vw;
+        height: 60vw;
+    }
+}
+/* Small Width*/
+@media only screen and (max-width: 575.98px){
+    /* INDEX */
+    [class*="w-sm-100"] {
+        width: 100%;
+    }
+}

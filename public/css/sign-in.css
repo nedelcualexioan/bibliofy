@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+}
+
+a
+{
+    display: block;
+    margin-top: 0.8rem;
+    text-decoration: none;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.top {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.mid{
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+.bot {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.logo{
+    width: 50%;
+    margin: auto;
+    display: block;
+}

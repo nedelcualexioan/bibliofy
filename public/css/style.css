@@ -1,0 +1,95 @@
+:root {
+  --ff-primary: "Bebas Neue", sans-serif;
+  --ff-secondary: "Montserrat", sans-serif;
+  --col-primary: #4f4a45;
+  --col-secondary: #f6f1ee;
+  --col-tertiary: #6c5f5b;
+  --col-main: #ed7d31;
+}
+svg {
+  pointer-events: none;
+}
+.rmCart:hover {
+  cursor: pointer;
+}
+.ff-primary {
+  font-family: var(--ff-primary);
+}
+body {
+  color: var(--col-primary);
+  background-color: var(--col-secondary);
+  font-family: var(--ff-secondary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.overflow-fix {
+  overflow: hidden;
+}
+.nav-icons {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  gap: 1rem;
+}
+.def-border {
+  border: 0.2rem solid var(--col-primary);
+  border-right: 0;
+  border-left: 0;
+}
+footer {
+  margin-top: auto;
+}
+
+/* Index */
+.header-index {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/images/background2.webp");
+  background-position: 70%;
+  height: 100vh;
+}
+.header-title {
+  font-size: 16vw;
+}
+.header-subtitle {
+  font-size: 4vw;
+}
+.title-border {
+  border-bottom: 0.5rem solid var(--col-primary);
+}
+.book-cover {
+  width: 21vw;
+  height: 30vw;
+}
+
+/* Books */
+#notification-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border-radius: 5px;
+  display: none;
+  width: 250px;
+  z-index: 1;
+}
+.header_ref {
+  transition: color 0.3s ease;
+  color: black;
+}
+.header_ref:hover {
+  color: #71984A;
+}
+/*
+svg {
+  pointer-events: none;
+}
+/* Product 
+i {
+    pointer-events: none;
+}
+*/
