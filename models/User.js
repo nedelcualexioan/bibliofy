@@ -28,28 +28,32 @@ const userSchema = new mongoose.Schema({
   },
   phone_number: {
     type: String,
-    default: ""
+    default: "",
   },
   address: {
     type: String,
-    default: ""
-  }
+    default: "",
+  },
 });
 
-userSchema.virtual("cart.totalProducts").get(function() {
+userSchema.virtual("cart.totalProducts").get(function () {
   let totalBooks = 0;
 
-  this.cart.products.forEach(product => {
+  this.cart.products.forEach((product) => {
     totalBooks += product.quantity;
   });
 
   return totalBooks;
 });
 
-userSchema.virtual("cart.totalPrice").get(function(){
+userSchema.virtual("cart.totalPrice").get(function () {
+  if (this.cart == undefined || this.cart.products.length == 0) {
+    return 0;
+  }
+
   let totalPrice = 0;
-  
-  this.cart.products.forEach(product => {
+
+  this.cart.products.forEach((product) => {
     totalPrice += product.product.price * product.quantity;
   });
 

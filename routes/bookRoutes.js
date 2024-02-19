@@ -5,22 +5,20 @@ const User = require("../models/User");
 const _ = require("lodash");
 
 router.use(async (req, res, next) => {
-  if(req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     try {
-      const user = await User.findOne({_id: req.user._id});
+      const user = await User.findOne({ _id: req.user._id });
       req.user = user;
       next();
-    }
-    catch(err) {
+    } catch (err) {
       console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
     }
-  }
-  else {
+  } else {
     req.user = null;
     next();
   }
-})
+});
 
 router.post("/add", async (req, res) => {
   try {
@@ -34,16 +32,16 @@ router.post("/add", async (req, res) => {
         user.cart.products = [];
       }
 
-      const existingProduct = user.cart.products.find((prod) =>
-        prod.product.equals(bookId),
-      );
+      const existingProduct = user.cart.products.find((prod) => {
+        console.log(bookId, prod._id);
+        prod.product.equals(bookId);
+      });
 
       existingProduct
         ? existingProduct.quantity++
         : user.cart.products.push({ product: bookId, quantity: 1 });
 
       await user.save();
-
       const cartCount = user.cart.totalProducts;
 
       res.json({ cartCount });
@@ -51,7 +49,7 @@ router.post("/add", async (req, res) => {
       res.sendStatus(401);
     }
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -62,7 +60,7 @@ router.get("/:category", async (req, res) => {
 
   res.render("books", {
     books: books,
-    user: req.user
+    user: req.user,
   });
 });
 
@@ -96,7 +94,7 @@ router.post("/filter", async (req, res) => {
   const books = await Book.find(query);
   res.render("books", {
     books: books,
-    user: req.user
+    user: req.user,
   });
 });
 
@@ -105,7 +103,7 @@ router.get("/", async (req, res) => {
 
   res.render("books", {
     books: books,
-    user: req.user
+    user: req.user,
   });
 });
 

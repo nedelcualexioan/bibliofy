@@ -20,7 +20,7 @@ $(document).ready(() => {
         showNotification();
       })
       .catch((error) => {
-        if(!error.status == 401) {
+        if (!error.status == 401) {
           console.log(error.message);
           window.location.href = "/api/books";
         }

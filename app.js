@@ -9,6 +9,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const session = require("express-session");
 const flash = require("express-flash");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
 
 const Message = require(__dirname + "/models/Message.js");
 const User = require(__dirname + "/models/User.js");
@@ -74,26 +75,26 @@ app.post("/account/details", async (req, res) => {
 });
 
 app.post("/account/password", async (req, res) => {
-
   try {
     const user = await User.findOne({ _id: req.user._id });
-  
-    user.changePassword(req.body.currentPassword, req.body.newPassword, function(err) {
-      if (err) {
-        req.flash("error", "Password is incorrect");
-      } else {
-        req.flash("success", "Password changed successfully.");
-      }
-      res.redirect("/account");
-    });
-  
-  }
-  catch (err) {
+
+    user.changePassword(
+      req.body.currentPassword,
+      req.body.newPassword,
+      function (err) {
+        if (err) {
+          req.flash("error", "Password is incorrect");
+        } else {
+          req.flash("success", "Password changed successfully.");
+        }
+        res.redirect("/account");
+      },
+    );
+  } catch (err) {
     console.log(err);
     req.flash("error", "An unexpected error occurred. Please try again");
     res.redirect("/account");
   }
-
 });
 
 app.get("/contact", (req, res) => {
@@ -135,14 +136,48 @@ app.get("/cart", async (req, res) => {
       "cart.products.product",
     );
 
-    console.log(user.cart);
-
     res.render("cart", {
       user: user,
     });
   } else {
     res.redirect("/api/auth/login");
   }
+});
+
+app.post("/contact", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  const msg = new Message({
+    name: name,
+    email: email,
+    message: message,
+  });
+  await msg.save();
+
+  const transporter = nodemailer.createTransport({
+    host: "protonmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASSWORD,
+    },
+  });
+  try {
+    await transporter.sendMail({
+      from: process.env.MAIL_USER,
+      to: email,
+      subject: "Feedback response " + name,
+      text: message,
+    });
+    console.log("Email sent successfully");
+    req.flash("details", "Email sent successfully");
+  } catch (error) {
+    console.error(error);
+    req.flash("details", "An unexpected error occurred. Please try again");
+  }
+
+  res.redirect("/contact");
 });
 
 app.listen(process.env.PORT || 3000, () => {

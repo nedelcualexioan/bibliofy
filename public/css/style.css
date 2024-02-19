@@ -6,12 +6,11 @@
   --col-tertiary: #6c5f5b;
   --col-main: #ed7d31;
 }
+
 svg {
   pointer-events: none;
 }
-.rmCart:hover {
-  cursor: pointer;
-}
+
 .ff-primary {
   font-family: var(--ff-primary);
 }
@@ -82,7 +81,7 @@ footer {
   color: black;
 }
 .header_ref:hover {
-  color: #71984A;
+  color: #71984a;
 }
 /*
 svg {
