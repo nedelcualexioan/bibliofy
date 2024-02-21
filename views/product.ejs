@@ -79,10 +79,6 @@
                         <h1 class="display-5 fw-bolder">
                             <%= book.title %>
                         </h1>
-                        <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$<%= (book.price + 5).toString().slice(0,5) %></span>
-                            <span>$<%= (book.price).toString().slice(0,5) %></span>
-                        </div>
                         <p class="lead">
                             <%= book.description %>
                         </p>
@@ -117,8 +113,6 @@
                                         <h5 class="fw-bolder">
                                             <%= prod.title %>
                                         </h5>
-                                        <!-- Product price-->
-                                        $<%= prod.price.toString().slice(0,5) %>
                                     </div>
                                 </div>
                                 <!-- Product actions-->

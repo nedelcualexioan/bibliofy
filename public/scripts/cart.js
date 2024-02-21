@@ -3,19 +3,6 @@ $(document).ready(function () {
   const borrow = $("#borrowBook");
   const totalPrice = $(".totalPrice").text();
 
-  borrow.on("change", function () {
-    const price = $(".totalPrice");
-
-    price.html(`<s>${price.text()}</s> FREE`);
-  });
-
-  credit.on("change", function () {
-    const price = $(".totalPrice");
-
-    price.css("text-decoration", "none");
-    price.html(totalPrice);
-  });
-
   $(".rmCart").on("click", function (ev) {
     const bookId = $(this).attr("data-value");
     const self = this;
@@ -42,7 +29,6 @@ $(document).ready(function () {
           .fadeOut(300, function () {
             $(this).remove();
           });
-        $(".totalPrice").text("$" + data.totalPrice);
         $(".totalProd").text(data.totalProducts);
       })
       .catch((error) => {
