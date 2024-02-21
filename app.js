@@ -154,28 +154,31 @@ app.post("/contact", async (req, res) => {
   });
   await msg.save();
 
-  const transporter = nodemailer.createTransport({
-    host: "protonmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASSWORD,
-    },
-  });
-  try {
+  async function sendEmail(to, subject, body) {
+    const transporter = nodemailer.createTransport({
+      host: "127.0.0.1",
+      port: 1025,
+      secure: false,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD,
+      },
+      tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    await transporter.verify();
+
     await transporter.sendMail({
       from: process.env.MAIL_USER,
-      to: email,
-      subject: "Feedback response " + name,
-      text: message,
+      to: to,
+      subject: subject,
+      text: `Dear ${name}, \n\nThank you for your message. We gave received it and will get back to you shortly. \n\nBest regards,\nBibliofy\n\n` + body
     });
-    console.log("Email sent successfully");
-    req.flash("details", "Email sent successfully");
-  } catch (error) {
-    console.error(error);
-    req.flash("details", "An unexpected error occurred. Please try again");
   }
+
+  sendEmail(email, "Message received", message);
 
   res.redirect("/contact");
 });
