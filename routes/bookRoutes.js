@@ -28,14 +28,7 @@ router.post("/add", async (req, res) => {
 
       const user = await User.findOne({ _id: userId });
 
-      if (!user.cart.products) {
-        user.cart.products = [];
-      }
-
-      const existingProduct = user.cart.products.find((prod) => {
-        console.log(bookId, prod._id);
-        prod.product.equals(bookId);
-      });
+      const existingProduct = user.cart.products.find((prod) => prod.product.equals(bookId));
 
       existingProduct
         ? existingProduct.quantity++

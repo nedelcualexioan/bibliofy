@@ -186,27 +186,35 @@
             <div class="container">
                 <article class="card">
                     <header class="card-header">My Orders</header>
-                    <div class="card-body">
-                        <h6>Order ID: OD45345345435</h6>
-                        <article class="card">
-                            <div class="card-body d-flex flex-wrap justify-content-evenly align-items-center text-center gap-5">
-                                <div><b>Estimated delivery time:</b><br>1 ian 2024</div>
-                                <div><b>Shipping by:</b><br>Shipper</div>
-                                <div><b>Status:</b><br>Picked by the courier</div>
-                                <div><b>Tracking #:</b><br>BD045903594059</div>
-                            </div>
-                        </article>
-                        <ul class="row m-0 row-cols-12 list-unstyled g-5">
-                            <li class="col border rounded ">
-                                <div class="row m-0 row-cols-1 row-cols-sm-2 row-cols-md-4 text-center align-items-center g-5 mb-5">
-                                    <div class="col"><img src="https://i.imgur.com/iDwDQ4o.png"></div>
-                                    <div class="col"><h4>Title</h4></div>
-                                    <div class="col"><h4>Author</h4></div>
-                                    <div class="col"><h4>Price</h4></div>
+                    <% orders.forEach(order=> { %>
+                        <div class="card-body">
+                            <h6>Order ID: <%= order._id.toString().toUpperCase() %>
+                            </h6>
+                            <article class="card">
+                                <div
+                                    class="card-body d-flex flex-wrap justify-content-evenly align-items-center text-center gap-5">
+                                    <div><b>Estimated delivery time:</b><br><%= formatDate(order.createdAt) %></div>
+                                    <div><b>Shipping by:</b><br>Shipper</div>
+                                    <div><b>Status:</b><br><%= order.status %></div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
+                            </article>
+                            <ul class="row m-0 row-cols-12 list-unstyled g-5">
+                                <% order.products.forEach(product=> { %>
+                                    <li class="col border rounded ">
+                                        <div class="row m-0 row-cols-1 row-cols-sm-2 row-cols-md-3 text-center align-items-center g-5 mb-5">
+                                            <div class="col"><img alt="book image" src=<%=product.product.image%>></div>
+                                            <div class="col">
+                                                <h4><%= product.product.title %></h4>
+                                            </div>
+                                            <div class="col">
+                                                <h4><%=product.quantity%>x</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <% }) %>
                 </article>
             </div>
         </section>

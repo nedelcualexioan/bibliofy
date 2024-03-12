@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  membership: {
+    type: String,
+    default: "Free"
+  }
 });
 
 userSchema.virtual("cart.totalProducts").get(function () {
