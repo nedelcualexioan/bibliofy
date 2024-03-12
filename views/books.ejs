@@ -136,14 +136,13 @@
         <section class="col-md-9 col-sm-8 col-12 my-sm-5 mt-5">
             <div class="row m-0 justify-content-center">
                 <!-- Search -->
-                <form class="col-12 input-group">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                        aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1">
+                <form id="searchForm" action="/api/books/search" method="post" class="col-12 input-group">
+                    <input type="text" class="form-control" name="bookTitle" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+                    <button type="submit" class="btn btn-outline-secondary" id="searchButton">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                         </svg>
-                    </span>
+                    </button>
                 </form>
                 <% books.forEach(book=> { %>
                     <div class="col-xxl-3 col-lg-4 col-md-6 col-12 mb-5 px-3 mt-5">

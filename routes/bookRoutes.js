@@ -47,6 +47,22 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.post("/search", async (req, res) => {
+  try {
+    const title = req.body.bookTitle;
+
+    const regex = new RegExp(title, 'i');
+  
+    const books = await Book.find({title: {$regex: regex}});
+  
+    res.render("books", {books: books, user: req.user});
+  }
+  catch (err) {
+    console.log(err.message);
+  }
+ 
+});
+
 router.get("/:category", async (req, res) => {
   const category = _.capitalize(req.params.category);
   const books = await Book.find({ category: category });

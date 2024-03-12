@@ -46,8 +46,27 @@ passport.deserializeUser(User.deserializeUser());
 const api = require(__dirname + "/routes/index.js")(passport);
 app.use("/api", api);
 
-app.get("/", (req, res) => {
-  res.render("index");
+function getSentences(text) {
+  const sentenceRegex = /[^.!?]+[.!?]+/g;
+
+  const sentences = text.match(sentenceRegex);
+
+  const firstSentences = sentences.slice(0, 4);
+
+  return firstSentences.join('');
+}
+
+app.get("/", async (req, res) => {
+
+  const books = await Book.find({}).limit(7);
+
+  books.forEach(book => {
+    book.description = getSentences(book.description);
+  });
+
+  res.render("index", {
+    books: books
+  });
 });
 
 function formatDate(date) {
