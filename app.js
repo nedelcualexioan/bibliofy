@@ -53,19 +53,18 @@ function getSentences(text) {
 
   const firstSentences = sentences.slice(0, 4);
 
-  return firstSentences.join('');
+  return firstSentences.join("");
 }
 
 app.get("/", async (req, res) => {
-
   const books = await Book.find({}).limit(7);
 
-  books.forEach(book => {
+  books.forEach((book) => {
     book.description = getSentences(book.description);
   });
 
   res.render("index", {
-    books: books
+    books: books,
   });
 });
 
@@ -73,8 +72,8 @@ function formatDate(date) {
   const expirationDate = new Date(date);
   expirationDate.setDate(expirationDate.getDate() + 4);
 
-  const options = { year: 'numeric', month: 'short', day: 'numeric' };
-  const formatter = new Intl.DateTimeFormat('en-US', options);
+  const options = { year: "numeric", month: "short", day: "numeric" };
+  const formatter = new Intl.DateTimeFormat("en-US", options);
   const formattedDate = formatter.format(expirationDate);
 
   return formattedDate;
@@ -83,8 +82,14 @@ function formatDate(date) {
 app.get("/account", async (req, res) => {
   if (req.isAuthenticated()) {
     const user = await User.findOne({ _id: req.user._id });
-    const orders = await Order.find({user: user._id}).populate("products.product");
-    res.render("account", { user: user, orders: orders, formatDate: formatDate });
+    const orders = await Order.find({ user: user._id }).populate(
+      "products.product",
+    );
+    res.render("account", {
+      user: user,
+      orders: orders,
+      formatDate: formatDate,
+    });
   } else {
     res.redirect("/api/auth/login");
   }
@@ -165,7 +170,7 @@ app.post("/cart/remove", async (req, res) => {
 
 app.post("/cart/order", async (req, res) => {
   if (req.isAuthenticated()) {
-    const selectedOption = parseInt(req.body['options-base']);
+    const selectedOption = parseInt(req.body["options-base"]);
     const user = await User.findOne({ _id: req.user._id });
     const totalProducts = user.cart.totalProducts;
 
@@ -179,23 +184,24 @@ app.post("/cart/order", async (req, res) => {
         req.flash("error", "Upgrade your membership to borrow more books");
         res.redirect("/cart");
         return;
-      }
-      else {
-
+      } else {
         const orders = await Order.find({ user: user._id });
+        let totalProducts = 0;
 
         for (const order of orders) {
           const currentDate = new Date();
-          const timeDifference = currentDate.getTime() - order.createdAt.getTime();
+          const timeDifference =
+            currentDate.getTime() - order.createdAt.getTime();
           const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
-
           if (daysDifference < 30) {
-            if (order.totalProducts + user.cart.totalProducts > 3) {
-              req.flash("error", "Upgrade your membership to borrow more books");
-              res.redirect("/cart");
-              return;
-            }
+            totalProducts++;
           }
+        }
+
+        if (totalProducts + user.cart.totalProducts > 3) {
+          req.flash("error", "Upgrade your membership to borrow more books");
+          res.redirect("/cart");
+          return;
         }
 
         const { firstName, lastName, address, country, city, zip } = req.body;
@@ -209,37 +215,37 @@ app.post("/cart/order", async (req, res) => {
           city: city,
           zip: zip,
           products: user.cart.products,
-          pickupPoint: selectedOption
+          pickupPoint: selectedOption,
         });
 
         await order.save();
 
         user.cart.products = [];
       }
-    }
-    else if (user.membership === "Pro") {
+    } else if (user.membership === "Pro") {
       if (totalProducts > 5) {
         req.flash("error", "Upgrade your membership to borrow more books");
         res.redirect("/cart");
         return;
-      }
-      else {
+      } else {
         const orders = await Order.find({ user: user._id });
+        let totalProducts = 0;
 
         for (const order of orders) {
           const currentDate = new Date();
-          const timeDifference = currentDate.getTime() - order.createdAt.getTime();
+          const timeDifference =
+            currentDate.getTime() - order.createdAt.getTime();
           const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
-
           if (daysDifference < 30) {
-            if (order.totalProducts + user.cart.totalProducts > 5) {
-              req.flash("error", "Upgrade your membership to borrow more books");
-              res.redirect("/cart");
-              return;
-            }
+            totalProducts++;
           }
         }
 
+        if (totalProducts + user.cart.totalProducts > 3) {
+          req.flash("error", "Upgrade your membership to borrow more books");
+          res.redirect("/cart");
+          return;
+        }
 
         const { firstName, lastName, address, country, city, zip } = req.body;
 
@@ -250,13 +256,12 @@ app.post("/cart/order", async (req, res) => {
           country: country,
           city: city,
           zip: zip,
-          products: user.cart.products
+          products: user.cart.products,
         });
 
         await order.save();
       }
-    }
-    else {
+    } else {
       const { firstName, lastName, address, country, city, zip } = req.body;
 
       const order = new Order({
@@ -266,7 +271,7 @@ app.post("/cart/order", async (req, res) => {
         country: country,
         city: city,
         zip: zip,
-        products: user.cart.products
+        products: user.cart.products,
       });
 
       await order.save();
@@ -313,8 +318,8 @@ app.post("/contact", async (req, res) => {
         pass: process.env.MAIL_PASSWORD,
       },
       tls: {
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: false,
+      },
     });
 
     await transporter.verify();
@@ -323,7 +328,9 @@ app.post("/contact", async (req, res) => {
       from: process.env.MAIL_USER,
       to: to,
       subject: subject,
-      text: `Dear ${name}, \n\nThank you for your message. We gave received it and will get back to you shortly. \n\nBest regards,\nBibliofy\n\n` + body
+      text:
+        `Dear ${name}, \n\nThank you for your message. We gave received it and will get back to you shortly. \n\nBest regards,\nBibliofy\n\n` +
+        body,
     });
   }
 
