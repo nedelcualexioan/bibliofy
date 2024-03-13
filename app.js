@@ -79,6 +79,10 @@ function formatDate(date) {
   return formattedDate;
 }
 
+app.get("/donate", (req, res) => {
+  res.render("service-info");
+});
+
 app.get("/account", async (req, res) => {
   if (req.isAuthenticated()) {
     const user = await User.findOne({ _id: req.user._id });
