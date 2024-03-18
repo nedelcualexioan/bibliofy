@@ -11,13 +11,11 @@
   "tasks": {
     "test": {
       "name": "test",
-      "command": "npm run test",
-      "runAtStart": false
+      "command": "npm run test"
     },
     "devStart": {
       "name": "devStart",
-      "command": "npm run devStart",
-      "runAtStart": false
+      "command": "npm run devStart"
     }
   }
 }

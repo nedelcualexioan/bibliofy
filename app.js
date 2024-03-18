@@ -83,22 +83,6 @@ app.get("/donate", (req, res) => {
   res.render("service-info");
 });
 
-app.get("/account", async (req, res) => {
-  if (req.isAuthenticated()) {
-    const user = await User.findOne({ _id: req.user._id });
-    const orders = await Order.find({ user: user._id }).populate(
-      "products.product",
-    );
-    res.render("account", {
-      user: user,
-      orders: orders,
-      formatDate: formatDate,
-    });
-  } else {
-    res.redirect("/api/auth/login");
-  }
-});
-
 app.post("/account/details", async (req, res) => {
   if (req.isAuthenticated()) {
     const user = await User.findOne({ _id: req.user._id });
@@ -139,6 +123,32 @@ app.post("/account/password", async (req, res) => {
   }
 });
 
+app.get("/account", async (req, res) => {
+  if (req.isAuthenticated()) {
+    const user = await User.findOne({ _id: req.user._id });
+    const orders = await Order.find({ user: user._id }).populate(
+      "products.product",
+    );
+    res.render("account", {
+      user: user,
+      orders: orders,
+      formatDate: formatDate,
+    });
+  } else {
+    res.redirect("/api/auth/login");
+  }
+});
+
+app.post("/account/plan", async (req, res) => {
+  const plan = req.body.plan;
+
+  const user = await User.findOne({ _id: req.user._id });
+
+  user.membership = plan;
+
+  await user.save();
+});
+
 app.get("/contact", (req, res) => {
   res.render("contact");
 });
@@ -176,15 +186,15 @@ app.post("/cart/order", async (req, res) => {
   if (req.isAuthenticated()) {
     const selectedOption = parseInt(req.body["options-base"]);
     const user = await User.findOne({ _id: req.user._id });
-    const totalProducts = user.cart.totalProducts;
+    const totalCart = user.cart.totalProducts;
 
-    if (totalProducts === 0) {
+    if (totalCart === 0) {
       req.flash("error", "You have no books in your cart");
       res.redirect("/cart");
       return;
     }
     if (user.membership === "Free") {
-      if (totalProducts > 3) {
+      if (totalCart > 3) {
         req.flash("error", "Upgrade your membership to borrow more books");
         res.redirect("/cart");
         return;
@@ -198,7 +208,7 @@ app.post("/cart/order", async (req, res) => {
             currentDate.getTime() - order.createdAt.getTime();
           const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
           if (daysDifference < 30) {
-            totalProducts++;
+            totalProducts += order.totalProducts;
           }
         }
 
@@ -227,7 +237,7 @@ app.post("/cart/order", async (req, res) => {
         user.cart.products = [];
       }
     } else if (user.membership === "Pro") {
-      if (totalProducts > 5) {
+      if (totalCart > 5) {
         req.flash("error", "Upgrade your membership to borrow more books");
         res.redirect("/cart");
         return;
@@ -245,7 +255,7 @@ app.post("/cart/order", async (req, res) => {
           }
         }
 
-        if (totalProducts + user.cart.totalProducts > 3) {
+        if (totalProducts + user.cart.totalProducts > 5) {
           req.flash("error", "Upgrade your membership to borrow more books");
           res.redirect("/cart");
           return;
@@ -254,6 +264,7 @@ app.post("/cart/order", async (req, res) => {
         const { firstName, lastName, address, country, city, zip } = req.body;
 
         const order = new Order({
+          user: user._id,
           firstName: firstName,
           lastName: lastName,
           address: address,
@@ -269,6 +280,7 @@ app.post("/cart/order", async (req, res) => {
       const { firstName, lastName, address, country, city, zip } = req.body;
 
       const order = new Order({
+        user: user._id,
         firstName: firstName,
         lastName: lastName,
         address: address,
